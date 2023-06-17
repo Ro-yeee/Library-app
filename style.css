@@ -1,0 +1,18 @@
+:root{
+    font-size: 16px;
+}
+
+*{
+    margin: 0;
+    background: #000000ed;
+    font-family: 'Bagel Fat One', cursive;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-container{
+    display: flex;
+    align-items: center;
+    color: #00ffb9;
+    background: black;
+    padding: 2em;
+}
