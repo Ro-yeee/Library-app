@@ -22,6 +22,82 @@ body{
     padding: 2em;
 }
 
+.button-container{
+    padding: 2em;
+    text-align: center;
+}
+
+.addBookButton{
+    color: #00ffb9;
+    background: rgb(0,0,0,0%);
+    border: none;
+    font-size: 1.2em;
+    padding: 1em;
+}
+
+.addBookButton:hover{
+    border: 2px solid #00ffb9;
+    border-radius: 16px;
+    background: #1e2f2a;
+}
+
+.addBookButton:active{
+    transform: scale(0.94);
+}
+
+.modal{
+    position: fixed;
+    display: none;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+.modal-content{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: white;
+    text-align: center;
+    width: 300px;
+    padding: 1em;
+    border-radius: 20px;
+    border: 4px solid #00ffb9;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 18px;
+
+}
+
+.input{
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: #dbf7ef;
+    height: 5em;
+}
+.submit{
+    background-color: #9fff9c;
+    cursor: pointer;
+}
+.submit:hover{
+    background-color:  #6df669;
+}
+
+.checkbox{
+    width: 24px;
+    height: 16px;
+    accent-color: #6df669;
+    cursor: pointer;
+}
+
 #main-section{
     margin: 4em;
     display: grid;

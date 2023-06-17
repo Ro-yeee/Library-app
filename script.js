@@ -1,5 +1,17 @@
 let myLibrary = []
 const libraryContainer = document.getElementById("main-section")
+const addBookButton = document.querySelector(".addBookButton")
+const modal = document.querySelector(".modal")
+
+addBookButton.onclick = () =>{
+    modal.style.display = "block" 
+}
+
+window.onclick = (e) =>{
+    if(e.target === modal){
+        modal.style.display = "none"
+    }
+}
 
 function Book(title,author,pages,read){
     this.title = title
@@ -32,6 +44,5 @@ function displayBook(){
 }
 
 displayBook()
-
 
 

@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Poppins:ital,wght@1,800&display=swap" rel="stylesheet">
+    <link rel="icon" href="./icon/kisspng-library-computer-icons-librarian-reference-work-cl-knowledge-edition-5b5110a0502025.0593241815320393283282.png">
 </head>
 <body>
     <header>
@@ -15,12 +16,26 @@
             <h1>Library</h1>
         </div>
     </header>
+    <div class="button-container">
+        <button class="addBookButton">+ Add book</button>
+    </div>
+    <div class="modal">
+        <div class="modal-content">
+            <form action="">
+                <h2>Add new book</h2>
+                <input class="input" type="text" name="title" placeholder="Title" required>
+                <input class="input" type="text" name="author" placeholder="Author" required>
+                <input class="input" type="number" name="pages" placeholder="Pages" required>
+                <div>
+                    <label for="read">Have you read it?</label>
+                    <input class="checkbox" type="checkbox" name="read" id="read">
+                </div>
+                <button class="input submit" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
     <section id="main-section">
-        <!-- <div class="card">
-                <h1>Flashpoint</h1>
-                <h2>DC</h2>
-                <h3>400</h3>
-        </div> -->
+     
     </section>
     </main>
     <script src="script.js"></script>
