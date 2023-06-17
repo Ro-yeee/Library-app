@@ -1,12 +1,17 @@
 :root{
-    font-size: 16px;
+    font-size: 16px;;
 }
 
 *{
     margin: 0;
-    background: #000000ed;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Bagel Fat One', cursive;
     font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background: #000000ed;
 }
 
 .header-container{
@@ -15,4 +20,17 @@
     color: #00ffb9;
     background: black;
     padding: 2em;
+}
+
+#main-section{
+    margin: 4em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 4em;
+}
+
+.card{
+    text-align: center;
+    background: white;
+    border: 2px solid aquamarine;
 }
