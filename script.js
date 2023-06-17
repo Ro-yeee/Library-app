@@ -2,22 +2,13 @@ let myLibrary = []
 const libraryContainer = document.getElementById("main-section")
 const addBookButton = document.querySelector(".addBookButton")
 const modal = document.querySelector(".modal")
-
-addBookButton.onclick = () =>{
-    modal.style.display = "block" 
-}
-
-window.onclick = (e) =>{
-    if(e.target === modal){
-        modal.style.display = "none"
-    }
-}
+const BookForm = document.getElementById("bookForm")
 
 function Book(title,author,pages,read){
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = read
+    this.isread = read
 }
 
 const one = new Book("Harry potter","J K Rowling",100,false)
@@ -30,12 +21,13 @@ function addBookToLibrary(){
 
 addBookToLibrary()
 
-function displayBook(){
+function displayTheBooks(){
+    libraryContainer.textContent = ""
     myLibrary.forEach(book => {
         const card = `<div class="card">
-                            <h2>${book.title}</h2>
-                            <h3>${book.author}</h3>
-                            <h4>${book.pages}</h4>
+                            <h2>${book.title}</h2><br>
+                            <h3>${book.author}</h3><br>
+                            <h4>Pages: ${book.pages}</h4>
                         </div>`;
         const div = document.createElement('div')
         div.innerHTML = card
@@ -43,6 +35,32 @@ function displayBook(){
     })
 }
 
-displayBook()
+displayTheBooks()
+
+addBookButton.onclick = () => modal.style.display = "block" 
+window.onclick = (e) =>{ if(e.target === modal)   modal.style.display = "none"  }
 
 
+function getDataFromForm(){
+    const title = document.getElementById("title")
+    const author = document.getElementById("author")
+    const pages = document.getElementById("pages")
+    const isread = document.getElementById("isread")
+    const obj = new Book(title.value,author.value,pages.value,isread.checked)
+    myLibrary.push(obj)
+}
+
+function clearForm(){
+    title.value = ""
+    author.value = ""
+    pages.value = ""
+    isread.checked = ""
+}
+
+BookForm.onsubmit = (e) =>{
+    e.preventDefault()
+    getDataFromForm()
+    displayTheBooks()
+    clearForm()
+    modal.style.display = "none"
+}
