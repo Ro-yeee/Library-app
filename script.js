@@ -21,13 +21,24 @@ function addBookToLibrary(){
 
 addBookToLibrary()
 
+function returnClass(status){
+    if(status === true) return "readBtn"
+    else return "notReadBtn"
+}
+
+function returnStatus(status){
+    if(status === true) return "Read"
+    else return "Not read"
+}
+
 function displayTheBooks(){
     libraryContainer.textContent = ""
     myLibrary.forEach(book => {
         const card = `<div class="card">
-                            <h2>${book.title}</h2><br>
-                            <h3>${book.author}</h3><br>
+                            <h2>${book.title}</h2>
+                            <h3>${book.author}</h3>
                             <h4>Pages: ${book.pages}</h4>
+                            <button class=${returnClass(book.isread)}>${returnStatus(book.isread)}</button>
                         </div>`;
         const div = document.createElement('div')
         div.innerHTML = card

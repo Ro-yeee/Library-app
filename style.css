@@ -25,6 +25,7 @@ body{
 .button-container{
     padding: 2em;
     text-align: center;
+    height: 20px;
 }
 
 .addBookButton{
@@ -106,7 +107,11 @@ form{
 }
 
 .card{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
     color: white;
     background: #11998e;
     background: -webkit-linear-gradient(to right, #38ef7d, #11998e); 
@@ -115,3 +120,23 @@ form{
     border-radius: 12px;
 }
 
+.readBtn,.notReadBtn{
+width: 8em;
+font-size: 1.5em;
+font-family: 'Lobster', cursive;
+border-radius: 4em;
+border: none;
+background-color: white;
+}
+.readBtn{
+    color: #0053ff;
+}
+.readBtn:hover{
+    background: wheat;
+}
+.notReadBtn{
+    color: #fa0000;
+}
+.notReadBtn:hover{
+    background: wheat;
+}
