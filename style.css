@@ -118,6 +118,7 @@ form{
     background: linear-gradient(to right, #38ef7d, #11998e);
     border: 4px solid wheat;
     border-radius: 12px;
+    height: 200px;
 }
 
 .readBtn,.notReadBtn{

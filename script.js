@@ -3,6 +3,7 @@ const libraryContainer = document.getElementById("main-section")
 const addBookButton = document.querySelector(".addBookButton")
 const modal = document.querySelector(".modal")
 const BookForm = document.getElementById("bookForm")
+let index = 0
 
 function Book(title,author,pages,read){
     this.title = title
@@ -38,12 +39,14 @@ function displayTheBooks(){
                             <h2>${book.title}</h2>
                             <h3>${book.author}</h3>
                             <h4>Pages: ${book.pages}</h4>
-                            <button class=${returnClass(book.isread)}>${returnStatus(book.isread)}</button>
+                            <button class="${returnClass(book.isread)} Btn" value="${index}">${returnStatus(book.isread)}</button>
                         </div>`;
         const div = document.createElement('div')
         div.innerHTML = card
         libraryContainer.appendChild(div)
+        index++
     })
+    index = 0
 }
 
 displayTheBooks()
@@ -75,3 +78,20 @@ BookForm.onsubmit = (e) =>{
     clearForm()
     modal.style.display = "none"
 }
+
+const statusButton = document.querySelectorAll(".Btn")
+statusButton.forEach(button =>{
+    button.addEventListener('click',() =>{
+        if(myLibrary[button.value].isread === true){
+            myLibrary[button.value].isread = false
+            button.classList.remove("readBtn")
+            button.classList.add("notReadBtn")
+            button.textContent = "Not read"
+        }else if(myLibrary[button.value].isread === false){
+            myLibrary[button.value].isread = true
+            button.classList.remove("notReadBtn")
+            button.classList.add("readBtn")
+            button.textContent = "Read"
+        }
+    })
+})
