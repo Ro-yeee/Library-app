@@ -127,17 +127,18 @@ font-size: 1.5em;
 font-family: 'Lobster', cursive;
 border-radius: 4em;
 border: none;
-background-color: white;
 }
 .readBtn{
-    color: #0053ff;
+    color: black;
+    background: #efef4d;
 }
 .readBtn:hover{
-    background: wheat;
+    background: #ffff00;
 }
 .notReadBtn{
-    color: #fa0000;
+    color: black;
+    background: #ff4d4d;
 }
 .notReadBtn:hover{
-    background: wheat;
+    background: red;
 }
