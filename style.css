@@ -11,6 +11,9 @@
 }
 
 body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: #000000ed;
 }
 
@@ -100,6 +103,7 @@ form{
 }
 
 #main-section{
+    position: relative;
     margin: 4em;
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
@@ -110,6 +114,7 @@ form{
     display: flex;
     flex-direction: column;
     gap: 1em;
+    padding: 0.5em;
     justify-content: center;
     align-items: center;
     color: white;
@@ -118,15 +123,16 @@ form{
     background: linear-gradient(to right, #38ef7d, #11998e);
     border: 4px solid wheat;
     border-radius: 12px;
-    height: 200px;
+    height: 250px;
 }
 
-.readBtn,.notReadBtn{
-width: 8em;
-font-size: 1.5em;
-font-family: 'Lobster', cursive;
-border-radius: 4em;
-border: none;
+.readBtn,.notReadBtn,.removeBtn{
+    flex: 1;
+    width: 8em;
+    font-size: 1.5em;
+    font-family: 'Lobster', cursive;
+    border-radius: 4em;
+    border: none;
 }
 .readBtn{
     color: black;
@@ -141,4 +147,23 @@ border: none;
 }
 .notReadBtn:hover{
     background: red;
+}
+
+.removeBtn{
+    background: wheat;
+}
+.removeBtn:hover{
+    background: black;
+    color: wheat;
+}
+
+footer{
+    margin-top: auto;
+    margin-bottom: 1em;
+    text-align: center;
+    color: #00ffb9;
+}
+footer > p{
+    font-family: 'Moirai One', cursive;
+    font-size: 1.1em;
 }

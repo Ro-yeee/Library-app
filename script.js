@@ -18,6 +18,7 @@ const one = new Book("Harry potter","J K Rowling",100,false)
 const two = new Book("Flashpoint","DC",400,true)
 myLibrary.push(one)
 myLibrary.push(two)
+displayTheBooks()
 
 // returns the appropriate style for the readstatus button
 function returnClass(status){
@@ -40,6 +41,7 @@ function displayTheBooks(){
                             <h3>${book.author}</h3>
                             <h4>Pages: ${book.pages}</h4>
                             <button class="${returnClass(book.isread)} Btn" value="${index}">${returnStatus(book.isread)}</button>
+                            <button class="removeBtn" value="${index}">Remove</button>
                         </div>`;
         const div = document.createElement('div')
         div.innerHTML = card
@@ -47,10 +49,9 @@ function displayTheBooks(){
         index++
     })
     index = 0
-    addButtonEvents()
+    addReadStatusButtonEvents()
+    addRemoveButtonEvents()
 }
-
-displayTheBooks()
 
 // making the modal to show when addBook button is clicked and to disappear when the user clicks anywhere else in the screen
 addBookButton.onclick = () => modal.style.display = "block" 
@@ -84,11 +85,11 @@ function clearForm(){
     isread.checked = ""
 }
 
-// Adding readButton event listners 
-function addButtonEvents(){
+// Adding readStatusButton event listners to dynamically added DOM elements(Books)
+function addReadStatusButtonEvents(){
     const statusButton = document.querySelectorAll(".Btn")
     statusButton.forEach(button =>{
-        button.addEventListener('click',() =>{
+        button.addEventListener('click', () =>{
             if(myLibrary[button.value].isread === true){
                 myLibrary[button.value].isread = false
                 displayTheBooks()
@@ -98,4 +99,15 @@ function addButtonEvents(){
             }
         })
     })
+}
+
+// Adding removeButton event listner to the Books
+function addRemoveButtonEvents(){
+    const removeButton = document.querySelectorAll(".removeBtn")
+    removeButton.forEach(button =>[
+        button.addEventListener('click', () =>{
+            myLibrary.splice(button.value,1)
+            displayTheBooks()
+        })
+    ])
 }
