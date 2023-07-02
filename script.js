@@ -7,8 +7,8 @@ const BookForm = document.getElementById("bookForm")
 let index = 0
 
 //Populating the library with books
-retriveLibrary()
 retriveLoad()
+retriveLibrary()
 displayTheBooks()
 
 // function to store initial load value in local storage
@@ -36,6 +36,7 @@ function save(){
 
 // function to retrive the library data
 function retriveLibrary(){
+    if(initialLoad) return
     myLibrary = JSON.parse(localStorage.getItem("library"))
 }
 
