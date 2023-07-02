@@ -9,6 +9,7 @@ let index = 0
 //Populating the library with books
 retriveLoad()
 retriveLibrary()
+displayTheBooks()
 
 // function to store initial load value in local storage
 function saveLoad(){
@@ -46,9 +47,9 @@ if(initialLoad){
     const two = new Book("Flashpoint","DC",400,true)
     myLibrary.push(one)
     myLibrary.push(two)
-    save()
-    displayTheBooks()
     initialLoad = false
+    displayTheBooks()
+    save()
     saveLoad()
 }
 
@@ -67,6 +68,7 @@ function returnStatus(status){
 
 // function to populate the library with books
 function displayTheBooks(){
+    if(initialLoad) return
     libraryContainer.textContent = ""
     myLibrary.forEach(book => {
         const card = `<div class="card">
