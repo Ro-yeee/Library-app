@@ -9,7 +9,6 @@ let index = 0
 //Populating the library with books
 retriveLoad()
 retriveLibrary()
-displayTheBooks()
 
 // function to store initial load value in local storage
 function saveLoad(){
