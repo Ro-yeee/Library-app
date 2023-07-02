@@ -10,7 +10,6 @@ let index = 0
 retriveLoad()
 retriveLibrary()
 displayTheBooks()
-console.log(initialLoad)
 
 // Book constructor
 function Book(title,author,pages,read){
@@ -27,7 +26,6 @@ function saveLoad(){
 
 // function to retrive the load value
 function retriveLoad(){
-    console.log(JSON.parse(localStorage.getItem("load")))
     if(JSON.parse(localStorage.getItem("load")) === null) return
     initialLoad = JSON.parse(localStorage.getItem("load"))
 }
