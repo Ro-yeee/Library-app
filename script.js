@@ -24,6 +24,9 @@ function save(){
 
 // function to retrive the library data
 function retriveLibrary(){
+    if(! JSON.parse(localStorage.getItem("library"))){
+        myLibrary = []
+    }
     myLibrary = JSON.parse(localStorage.getItem("library"))
 }
 
