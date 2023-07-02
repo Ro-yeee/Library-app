@@ -1,4 +1,5 @@
 let myLibrary =  []
+let initialLoad = true
 const libraryContainer = document.getElementById("main-section")
 const addBookButton = document.querySelector(".addBookButton")
 const modal = document.querySelector(".modal")
@@ -6,8 +7,10 @@ const BookForm = document.getElementById("bookForm")
 let index = 0
 
 //Populating the library with books
+retriveLoad()
 retriveLibrary()
 displayTheBooks()
+console.log(initialLoad)
 
 // Book constructor
 function Book(title,author,pages,read){
@@ -15,6 +18,30 @@ function Book(title,author,pages,read){
     this.author = author
     this.pages = pages
     this.isread = read
+}
+
+// function to save the load value
+function saveLoad(){
+    localStorage.setItem("load",JSON.stringify(initialLoad))
+}
+
+// function to retrive the load value
+function retriveLoad(){
+    console.log(JSON.parse(localStorage.getItem("load")))
+    if(JSON.parse(localStorage.getItem("load")) === null) return
+    initialLoad = JSON.parse(localStorage.getItem("load"))
+}
+
+// Adding 2 sample books
+if(initialLoad){
+    const one = new Book("Harry Potter","J K Rowling",100,false)
+    const two = new Book("Flashpoint","DC",400,true)
+    myLibrary.push(one)
+    myLibrary.push(two)
+    initialLoad = false
+    saveLoad()
+    save()
+    displayTheBooks()
 }
 
 // function to save the library data in local storage
