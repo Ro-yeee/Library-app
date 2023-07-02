@@ -24,10 +24,11 @@ function save(){
 
 // function to retrive the library data
 function retriveLibrary(){
-    if(! JSON.parse(localStorage.getItem("library"))){
+    if(JSON.parse(localStorage.getItem("library"))){
+        myLibrary = JSON.parse(localStorage.getItem("library"))
+    }else{
         myLibrary = []
     }
-    myLibrary = JSON.parse(localStorage.getItem("library"))
 }
 
 // returns the appropriate style for the readstatus button
@@ -44,7 +45,6 @@ function returnStatus(status){
 
 // function to populate the library with books
 function displayTheBooks(){
-    if(! myLibrary) return
     libraryContainer.textContent = ""
     myLibrary.forEach(book => {
         const card = `<div class="card">
