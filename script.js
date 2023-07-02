@@ -1,9 +1,25 @@
-let myLibrary = []
+let myLibrary =  []
+let initialLoad = true
 const libraryContainer = document.getElementById("main-section")
 const addBookButton = document.querySelector(".addBookButton")
 const modal = document.querySelector(".modal")
 const BookForm = document.getElementById("bookForm")
 let index = 0
+
+//Populating the library with books
+retriveLibrary()
+retriveLoad()
+displayTheBooks()
+
+// function to store initial load value in local storage
+function saveLoad(){
+    localStorage.setItem("load",JSON.stringify(initialLoad))
+}
+
+// function to retrive whether it is initial load or not
+function retriveLoad(){
+    initialLoad = JSON.parse(localStorage.getItem("load"))
+}
 
 // Book constructor
 function Book(title,author,pages,read){
@@ -13,12 +29,29 @@ function Book(title,author,pages,read){
     this.isread = read
 }
 
-// Creating 2 sample books and adding it to library
-const one = new Book("Harry potter","J K Rowling",100,false)
-const two = new Book("Flashpoint","DC",400,true)
-myLibrary.push(one)
-myLibrary.push(two)
-displayTheBooks()
+// function to save the library data in local storage
+function save(){
+    localStorage.setItem("library",JSON.stringify(myLibrary))
+}
+
+// function to retrive the library data
+function retriveLibrary(){
+    myLibrary = JSON.parse(localStorage.getItem("library"))
+}
+
+
+// Creating 2 sample books and adding it to library only at the initial load
+if(initialLoad){
+    const one = new Book("Harry potter","J K Rowling",100,false)
+    const two = new Book("Flashpoint","DC",400,true)
+    myLibrary.push(one)
+    myLibrary.push(two)
+    save()
+    displayTheBooks()
+    initialLoad = false
+    saveLoad()
+}
+
 
 // returns the appropriate style for the readstatus button
 function returnClass(status){
@@ -66,6 +99,7 @@ window.onclick = (e) =>{
 BookForm.onsubmit = (e) =>{
     e.preventDefault()
     getDataFromForm()
+    save()
     displayTheBooks()
     clearForm()
     modal.style.display = "none"
@@ -92,9 +126,11 @@ function addReadStatusButtonEvents(){
         button.addEventListener('click', () =>{
             if(myLibrary[button.value].isread === true){
                 myLibrary[button.value].isread = false
+                save()
                 displayTheBooks()
             }else if(myLibrary[button.value].isread === false){
                 myLibrary[button.value].isread = true
+                save()
                 displayTheBooks()
             }
         })
@@ -107,6 +143,7 @@ function addRemoveButtonEvents(){
     removeButton.forEach(button =>[
         button.addEventListener('click', () =>{
             myLibrary.splice(button.value,1)
+            save()
             displayTheBooks()
         })
     ])
