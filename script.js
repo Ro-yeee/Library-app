@@ -1,5 +1,4 @@
 let myLibrary =  []
-let initialLoad = true
 const libraryContainer = document.getElementById("main-section")
 const addBookButton = document.querySelector(".addBookButton")
 const modal = document.querySelector(".modal")
@@ -7,19 +6,8 @@ const BookForm = document.getElementById("bookForm")
 let index = 0
 
 //Populating the library with books
-retriveLoad()
 retriveLibrary()
 displayTheBooks()
-
-// function to store initial load value in local storage
-function saveLoad(){
-    localStorage.setItem("load",JSON.stringify(initialLoad))
-}
-
-// function to retrive whether it is initial load or not
-function retriveLoad(){
-    initialLoad = JSON.parse(localStorage.getItem("load"))
-}
 
 // Book constructor
 function Book(title,author,pages,read){
@@ -36,23 +24,8 @@ function save(){
 
 // function to retrive the library data
 function retriveLibrary(){
-    if(initialLoad) return
     myLibrary = JSON.parse(localStorage.getItem("library"))
 }
-
-
-// Creating 2 sample books and adding it to library only at the initial load
-if(initialLoad){
-    const one = new Book("Harry potter","J K Rowling",100,false)
-    const two = new Book("Flashpoint","DC",400,true)
-    myLibrary.push(one)
-    myLibrary.push(two)
-    initialLoad = false
-    displayTheBooks()
-    save()
-    saveLoad()
-}
-
 
 // returns the appropriate style for the readstatus button
 function returnClass(status){
@@ -68,7 +41,7 @@ function returnStatus(status){
 
 // function to populate the library with books
 function displayTheBooks(){
-    if(initialLoad) return
+    if(! myLibrary) return
     libraryContainer.textContent = ""
     myLibrary.forEach(book => {
         const card = `<div class="card">
